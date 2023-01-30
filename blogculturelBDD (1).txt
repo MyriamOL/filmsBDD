@@ -1,0 +1,132 @@
+
+create table inscrit
+(
+id_inscrit numeric primary key,
+mail varchar(20),
+pseudo varchar(20),
+nom varchar(20),
+prenom varchar(20),
+motDePasse varchar(20)
+);
+
+create table film
+(
+	id_film numeric primary key,
+	titre VARCHAR(30),
+	duree numeric,
+        dateSortie date
+
+	
+);
+
+create table genre
+(
+	id_genre numeric primary key,
+	intitule VARCHAR(80)
+	
+);
+create table  critique
+(
+	id_commentaire numeric primary key,
+	titre VARCHAR(20),
+	commentaire VARCHAR(300),
+	date_validite date,
+        id_film numeric references film (id_film), 
+        id_inscrit numeric references inscrit(id_inscrit)
+	
+);
+
+
+
+create table appartient 
+(
+     id_film  numeric references film(id_film),
+     id_genre numeric references genre(id_genre,
+    constraint pk primary key(id_film, id_genre)
+	
+);
+
+
+
+
+insert into inscrit values (1000,'leroy@gmail.com','leroy.59','leroy','paul' ,'mdp1');
+insert into inscrit values (1001,'dorothe@gmail.com','del.99','delpierre','delphine' ,'mdp2');
+insert into inscrit values (1002,'geraaa@gmail.com','mazur1','masure','cedric' ,'mdp3');
+insert into inscrit values (1003,'caron@gmail.com','carr2a','carolin','sophie' ,'mdp4');
+insert into inscrit values (1004,'molina@gmail.com','lrivol','morel','lina' ,'mdp5');
+insert into inscrit values (1005,'never@gmail.com','Neverr2','nilan','simon' ,'mdp6');
+
+
+
+insert into film values (1,'Ready Player One',140,('28/03/18');
+insert into film values (2,'First Man',142,('17/10/18');
+insert into film values (3,'Pentagon Papers ',116,('24/01/2018');
+insert into film values (4,'À la poursuite de Ricky Baker',101,('16/01/2017');
+insert into film values (5,'Les Misérables ',104,('20/11/2019');
+insert into film values (6,'Le Dernier Duel ',152,('17/10/18');
+insert into film values (7,'The French Dispatch ',103,('27/10/2021');
+insert into film values (8,'I wanna dance with somebody',136,('21/12/2022');
+insert into film values (9,'The Batman ',176,('02/03/2022');
+insert into film values (10,'Avatar - La Voie de l'eau ',192,('14/12/2022');
+
+
+insert into genre values (11,' Action');
+insert into genre values (12,'Aventure');
+insert into genre values (13,' Drame');
+insert into genre values (14,'Comedie');
+insert into genre values (15,'Romance');
+insert into genre values (16,'Biopic');
+insert into genre values (17,'Historique');
+insert into genre values (18,'Policier');
+insert into genre values (19,' Science fiction');
+insert into genre values (20,'Horreur');
+
+
+insert into critique values (200,null,null,null,1,1000);
+insert into critique values (201,' A voir !','je trouve ce film tellement touchant !',('24/01/2018'),1,1001);
+insert into critique values (202,'A regarder','je resume Lorsque Halliday meurt, il promet son immense fortune à la première personne qui découvre un oeuf de Pâques numérique caché dans l'OASIS.,',null,1,1002);
+insert into critique values (203,'chef d'oeuvre','Sam Neill est remarquable dans ce rôle de père de substitution qui subit la situation, quand à Julian Dennison il incarne à merveille, sans trop en faire, ce gosse paumé qui sait très vite être attachant. Tout marche. Et c’est d’autant plus efficace que ce film est incroyablement dense.',null,4,1000);
+insert into critique values (204,'passable','je ne comprend pas l'engouement pour ce film vraiment cela me depasse ',null,7,1000);
+insert into critique values (205,'10/10','a voir absolument une pepite cinematographique',null,4,1000);
+insert into critique values (206,'incroyable','super film vraiment !',('24/01/2018'),5,1000);
+insert into critique values (207,' le film de notre vie ','Jamais un film n'a été aussi près des ressentis psychologiques de ces héros modernes que sont les astronautes.',('04/09/2019'),2,1002);
+insert into critique values (208,' Mitic’est drôle, vraiment drôle. On se sent bien avec ces personnages attachants joués par des acteurs au top (Sam Neil et Julian Dennison en tête), la réalisation est soignée, les dialogues ont du piquant bien qu’ils auraient pu avoir plus de fond et les paysages sont magnifiques. Effet « feel good » garantit tout le long du film',('24/01/2019'),4,1003);
+insert into critique values (210,'Waaaaw','Qui peut dire que cela reflète la réalité en dehors de ceux qui vivent les évènements au quotidien. Je ne peut prétendre que c'est le reflet de la vie en cité et ne peu donner que mon avis de spectateur de cinéma. J'ai vraiment aimé ce film pour la simplicité du jeu d'acteur qui nous plonge dans un réalisme bleufant. Merci pour ce bon moment.',('10/11/2019),5,1002);
+insert into critique values (211,null,'Je suis sorti tres déçu des 3 versions qui se prétendent historiques alors qu'elles ne le sont pas. ',('24/01/2021'),6,1002);
+insert into critique values (212,' bof','J’ai une profonde admiration pour  Wes Anderson mais je l’ai senti cette fois ci un peu emprisonné de son style … il est obligé de faire du Wes avec ici un Budget alloué au casting No limit ! ',('11/12/2021'),7,1004);
+insert into critique values (213,'epoustouflant','Ne pas focaliser sur la ressemblance physique qui est inexistante mais plutôt regarder le film pour avoir un petit aperçu de ce qu’a été la vie de cet ovni vocal et physique qu’était Whitney !',('15/06/2020'),8,1004);
+insert into critique values (214,'comme on aime ','Un des meilleurs films de super héros depuis the dark knight et watchmen. Un scénario qui monte en puissance !',('08/04/2020'),9,1001);
+
+insert into critique values (215,' Emotion garantie','Je viens d'aller voir Avatar 2 : la voie de l'eau au cinéma et ce en 3D 4DX.
+Que dire à part que ce film est tout simplement époustouflant !! Durant ces 3 heures de film on passe par toutes les émotions possible, c'est incroyable. Je reconnais avoir eu du mal à me retenir de pleurer haha',('24/02/2023'),10,1000);
+
+
+  
+insert into appartient values (1,11);
+insert into appartient values (1,12);
+insert into appartient values (1,19);
+insert into appartient values (2,13);
+insert into appartient values (2,16);
+insert into appartient values (3,16);
+insert into appartient values (3,13);
+insert into appartient values (3,17);
+insert into appartient values (4,13);
+insert into appartient values (5,13);
+insert into appartient values (6,13);
+insert into appartient values (6,17);
+insert into appartient values (7,13);
+insert into appartient values (8,16);
+insert into appartient values (9,11);
+insert into appartient values (9,13);
+insert into appartient values (9,18);
+insert into appartient values (10,19);
+insert into appartient values (10,11);
+insert into appartient values (10,12);
+
+
+
+
+
+
+
+

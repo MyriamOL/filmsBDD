@@ -1,0 +1,37 @@
+Requête 1 : Afficher tous les films avec toutes leurs informations
+Requête 2 : Afficher les titres, les durées, et les dates de sortie de tous les films
+Requête 3 : Afficher les films sortis avant début 2019
+Requête 4 : Afficher les films sortis entre début janvier 2018 et fin juin 2019
+Requête 5 : Afficher les films qui ont un titre qui contient le mot "with"
+Requête 6 : Afficher les films qui ont un titre qui commence par "The"
+Requête 7 : Afficher les 2 premiers films dans la base
+
+
+
+1- SELECT * FROM  film;
+
+2- SELECT distinct titre,duree,dateSortie
+ FROM film;
+
+3-SELECT*
+ FROM film
+ WHERE dateSortie<'01-01-2019';
+
+4-SELECT*
+ FROM film
+WHERE dateSortie BETWEEN
+'01-01-2018' AND 30-06-2019'
+
+
+5-SELECT titre
+ FROM film
+WHERE titre LIKE ‘%with%’;
+
+6-SELECT *
+FROM   FILM
+WHERE  titre LIKE 'The\%';
+
+
+7-SELECT *
+  FROM FILM  ORDER BY id_film
+ FETCH FIRST 2 ROWS ONLY;
